@@ -1,8 +1,8 @@
-# GitHub
+# 1.6: GitHub
 
-About 18 minutes. Do this after G2.
+About 18 minutes. Do this last in the chapter, after [lesson 1.5](05-head-body-button.md).
 
-By the end of this lesson your project will be on GitHub: a copy of your files and all your save points, which your teacher can see. The routine you learned in G2 also gets a sixth move, `git push`.
+By the end of this lesson your project will be on GitHub: a copy of your files and all your save points, which your teacher can see. The routine you learned in lesson 1.3 also gets a sixth move, `git push`.
 
 Before you start you need a GitHub account. If you do not have one yet, tell your teacher.
 
@@ -83,12 +83,12 @@ The first time, a window may open and ask you to sign in to GitHub. Sign in and 
 You should see something like this. The numbers will differ, and the important line is `main -> main`:
 
 ```
-Enumerating objects: 15, done.
-Counting objects: 100% (15/15), done.
+Enumerating objects: 27, done.
+Counting objects: 100% (27/27), done.
 Delta compression using up to 8 threads
-Compressing objects: 100% (11/11), done.
-Writing objects: 100% (15/15), 2.10 KiB | 2.10 MiB/s, done.
-Total 15 (delta 2), reused 0 (delta 0), pack-reused 0
+Compressing objects: 100% (21/21), done.
+Writing objects: 100% (27/27), 3.62 KiB | 3.62 MiB/s, done.
+Total 27 (delta 6), reused 0 (delta 0), pack-reused 0
 To https://github.com/yourname/studentplanner.git
  * [new branch]      main -> main
 branch 'main' set up to track 'origin/main'.
@@ -103,28 +103,29 @@ Reload the repository page in your browser.
 You should see: your files, and your README shown underneath them as the front page of the project.
 
 ```
-+--------------------------------------------------------+
-| yourname / studentplanner                      Private |
-+--------------------------------------------------------+
-| main            4 Commits                              |
-+--------------------------------------------------------+
-| README.md     Add a line to README          2 days ago |
-| index.html    Change the welcome word       1 hour ago |
-| style.css     1.1 Hello: HTML and CSS       1 hour ago |
-+--------------------------------------------------------+
-| README.md                                              |
-|                                                        |
-| Student Planner                                        |
-| A planner for my schedule, homework and activities.    |
-| By Sam                                                 |
-+--------------------------------------------------------+
++------------------------------------------------------------------+
+| yourname / studentplanner                                Private |
++------------------------------------------------------------------+
+| main            7 Commits                                        |
++------------------------------------------------------------------+
+| README.md     Add a line to README                    2 days ago |
+| index.html    1.5 The head, the body and a button     1 hour ago |
+| style.css     1.4 Colour and type                     1 hour ago |
+| favicon.svg   1.5 The head, the body and a button     1 hour ago |
++------------------------------------------------------------------+
+| README.md                                                        |
+|                                                                  |
+| Student Planner                                                  |
+| A planner for my schedule, homework and activities.              |
+| By Sam                                                           |
++------------------------------------------------------------------+
 ```
 
 Your page will look a little different, but it has the same parts. Click the number of commits. You will see the same captions that `git log --oneline` shows.
 
 ### 6. The routine, with a push
 
-Now try the whole routine. Open `index.html` and change the welcome line again, for example to `Hi, Sam`. Save the file. Then:
+Now try the whole routine. Open `README.md` and add a line at the end, such as `Now on GitHub.` Save the file. Then:
 
 ```
 git status
@@ -146,13 +147,13 @@ Reload the repository page. The newest commit is now "Try a push".
 
 In the Source Control tab it works the same way. After you commit, the blue **Commit** button turns into a **Sync Changes** button with an arrow and a number. Click it to push. VS Code may ask you to confirm.
 
-From now on, every lesson ends with these six moves:
+Whenever you want to save your work and send it to GitHub, make these six moves:
 
 ```
   1. git status
   2. git diff
   3. git add .
-  4. git commit -m "lesson number and name"
+  4. git commit -m "what you changed"
   5. git log --oneline
   6. git push
 ```
@@ -163,14 +164,15 @@ A push only sends save points. If you changed a file but did not commit it, it i
 
 - GitHub keeps a copy of your project, so it is safe and your teacher can see it.
 - `git remote add origin <address>` tells git where the copy lives. You only do that once.
-- `git push` sends your new save points. Do it at the end of every lesson.
+- `git push` sends your new save points. Do it whenever you want your latest save points on GitHub.
 - `git push` sends commits only. Commit first.
+- From now on, finish every lesson with the routine and a push.
 
 ## Homework
 
 Each should take about five minutes.
 
-1. **Push your homework.** If you have not done the homework from lesson 1.1, do it now. Save it with the routine, with the caption `1.1 Homework`, and push. You know it worked when GitHub shows `1.1 Homework` at the top of the commits.
+1. **Push your homework.** If you have not done the homework from lesson 1.2, do it now. Save it with the routine, with the caption `1.2 Homework`, and push. You know it worked when GitHub shows `1.2 Homework` at the top of the commits. Then take the homework out again, as the end of each task in lesson 1.2 says.
 
 2. **Read a commit on GitHub.** On GitHub, click the commits, then click the one called `Change the welcome word`. You will see the same red and green diff you saw in VS Code. You know it worked when you can say what that commit changed.
 
@@ -189,7 +191,7 @@ Each should take about five minutes.
 ## Stuck?
 
 - **`fatal: remote origin already exists`.** You have already added the remote. Run `git remote -v` to see the address. If the address is wrong, run `git remote set-url origin <the right address>`.
-- **`error: src refspec main does not match any`.** Your timeline has a different name, or you have not saved anything yet. Run `git status`. If it says `master`, run `git branch -M main` and push again, and tell your teacher.
+- **`error: src refspec main does not match any`.** Your timeline has a different name, or you have not saved anything yet. Run `git status`. If it says `master`, run `git branch -M main` and push again.
 - **`Authentication failed` or `Permission denied`.** GitHub does not know it is you. Tell your teacher.
 - **`Updates were rejected because the remote contains work that you do not have locally`.** You made the repository with a README or other file in it. Tell your teacher.
 - **GitHub looks the same after the push.** Reload the page, and check that you committed before you pushed.

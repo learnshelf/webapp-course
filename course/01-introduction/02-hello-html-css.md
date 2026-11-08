@@ -1,4 +1,4 @@
-# 1.1: Hello, HTML and CSS
+# 1.2: Hello, HTML and CSS
 
 About 20 minutes.
 
@@ -17,6 +17,8 @@ A web page is made of three jobs:
 ```
 
 Today is HTML and CSS. JavaScript comes later.
+
+HTML stands for HyperText Markup Language, and CSS for Cascading Style Sheets. You do not need to remember the long names. They only tell you what the letters mean.
 
 HTML is made of **tags**. A tag is a word in angle brackets. Most tags come in pairs, with content in between:
 
@@ -56,7 +58,7 @@ Today you build the first piece: the title and the welcome line, centred on a co
 
 In VS Code, make a new file called `index.html` in your `studentplanner` folder, next to `README.md`.
 
-Click in the empty file, type `!` and press Tab.
+Click in the empty file, type `!` and press Tab. (This shortcut is called Emmet, and VS Code has it built in.)
 
 You should see: VS Code fills the file with the skeleton of a web page. It looks something like this:
 
@@ -74,6 +76,8 @@ You should see: VS Code fills the file with the skeleton of a web page. It looks
 </html>
 ```
 
+If nothing happens when you press Tab, type the skeleton above by hand, exactly as it is shown.
+
 You do not need to understand the top part yet. Everything you can see on the page goes between `<body>` and `</body>`.
 
 ### 3. Add your content
@@ -89,6 +93,8 @@ Type these two lines between `<body>` and `</body>`. Use your own first name ins
 
 `h1` is the main heading. `p` is a paragraph.
 
+VS Code may add the closing tag for you as soon as you type an opening tag: type `<h1>` and `</h1>` may appear by itself. If it does, type only the words in between, and do not type the closing tag yourself.
+
 Save the file with Ctrl+S (Cmd+S on a Mac).
 
 ### 4. Open it in the browser
@@ -96,6 +102,8 @@ Save the file with Ctrl+S (Cmd+S on a Mac).
 Look at the blue bar at the very bottom of VS Code. Click **Go Live** at the bottom right. (If you cannot see it, look at "Stuck?" at the end.)
 
 You should see: your browser opens with your page in it. The address starts with `127.0.0.1:5500`. That is your own computer showing you the page, and it is not on the internet. While it runs, the Go Live button changes to say `Port: 5500`.
+
+If the page opens in a browser other than Chrome or Edge (a Mac may open Safari), copy the address from its address bar, paste it into Chrome or Edge, and use that browser from now on.
 
 Put VS Code and the browser side by side if you can. From now on, every time you save a file, the page in the browser updates by itself:
 
@@ -272,19 +280,19 @@ body {
 - The page reads your CSS because of the `link` line in the `head`.
 - Save, and the browser shows every change by itself. That is Go Live at work.
 
-Next you will save this page with git, and learn to look back at your save points.
+Next you will save this page with git, and learn to look back at your save points, in [lesson 1.3](03-git-workflow.md). After it comes [lesson 1.4, Colour and type](04-colour-and-type.md).
 
 ## Homework
 
-Do this after the next lesson, so you can save it with git. Each task should take about five minutes.
+Each task should take about five minutes.
 
-1. **Pick your colour and your side.** Try at least three colour names for the background, such as `lavender`, `skyblue` and `tomato`, and keep your favourite. Then try `left` and `right` instead of `center` for `text-align`, and put it back to the one you like best. You know it worked when the page shows your colour and the text sits where you want it.
+Lesson 1.3's homework asks you to save this homework with git. If you do that, do it first. Then take each change out again, as the end of each task says: the next lessons expect your files to look as they did at the end of this lesson.
 
-2. **One more line.** Add a second `p` under the welcome line, saying what month you started. Then change `main` to `section` and look at the browser. You know it worked when you have two lines on the page, and changing the wrapper changed nothing.
+1. **Pick your colour and your side.** Try at least three colour names for the background, such as `lavender`, `skyblue` and `tomato`, and pick your favourite. Then try `left` and `right` instead of `center` for `text-align`. You know it worked when the page shows your colour and the text sits where you want it. Take it out again when you are done: put the background back to `lightyellow` and `text-align` back to `center`.
 
-3. **Stretch: your own rule.** Write a second rule in `style.css` that makes the welcome line a different colour. Hint: the selector is `p`, and the property for text colour is `color`. You know it worked when only the `p` text changes colour and the heading stays black.
+2. **One more line.** Add a second `p` under the welcome line, saying what month you started. Then change `main` to `section` and look at the browser. You know it worked when you have two lines on the page, and changing the wrapper changed nothing. Take it out again when you are done: delete the second `p` line, and change `section` back to `main`, in both places.
 
-When you are done, finish with the routine you learned in git: commit with the caption `1.1 Homework`.
+3. **Stretch: your own rule.** Write a second rule in `style.css` that makes the welcome line a different colour. Hint: the selector is `p`, and the property for text colour is `color`. You know it worked when only the `p` text changes colour and the heading stays black. Take it out again when you are done: delete the `p` rule.
 
 ## Stuck?
 
@@ -292,4 +300,5 @@ When you are done, finish with the routine you learned in git: commit with the c
 - **There is no Go Live button.** The Live Server extension is missing. Click the Extensions icon on the left (it looks like four squares), search for `Live Server`, choose the one by Ritwick Dey, and click Install. Then look for Go Live again.
 - **The browser says it cannot reach the site.** The live server has stopped. Click Go Live again.
 - **The colour does not change.** Check the `link` line in `index.html`: `href="style.css"`. Both files must be in the same folder. In `style.css`, check the curly brackets `{ }` and that the line ends with a semicolon `;`.
-- **The page looks strange or some text is missing.** Every opening tag needs a closing tag with a slash, like `</h1>`. Check that each pair matches.
+- **The page looks strange or some text is missing.** Every paired tag needs a closing tag with a slash, like `</h1>` (`meta` and `link` do not). Check that each pair matches. VS Code may have added a closing tag for you as you typed, so look for a doubled one such as `</h1></h1>`, and delete the extra.
+- **Pressing Tab after the `!` does nothing.** Type the skeleton from step 2 by hand.

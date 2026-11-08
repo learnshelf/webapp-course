@@ -1,12 +1,12 @@
-# Git workflow
+# 1.3: Git workflow
 
-About 18 minutes. Do this right after lesson 1.1.
+About 20 minutes. Do this right after lesson 1.2.
 
-By the end of this lesson you will have saved your first web page with git, read exactly what changed in a file, and undone a mistake. You will also have a routine that you repeat at the end of every lesson.
+By the end of this lesson you will have saved your first web page with git, read exactly what changed in a file, and undone a mistake. You will also have a routine that you can repeat whenever you want to save your work.
 
 ## The idea
 
-In G1 you saved a README. Now you have a real page to save. At the end of every lesson you will make the same moves:
+In [lesson 1.1](01-git-introduction.md) you saved a README. Now you have a real page to save. Whenever you want to save your work, you make the same moves:
 
 ```
   1. git status             what changed?
@@ -18,7 +18,7 @@ In G1 you saved a README. Now you have a real page to save. At the end of every 
 
 The dot in `git add .` means "everything in this folder that changed".
 
-The caption is the lesson number and its name, like `1.1 Hello: HTML and CSS` or `1.2 Colour and type`. Later your list of save points will read like the course.
+The caption says what you saved. For your first page, use the lesson number and its name, like `1.2 Hello, HTML and CSS`. After that, write a short caption that says what changed.
 
 One thing to know about `git diff`: it only shows changes in files git already knows. A brand new file has nothing to compare with, so `git diff` stays quiet about it.
 
@@ -37,7 +37,7 @@ Open the terminal in VS Code and run:
 git status
 ```
 
-You should see: your two new files from lesson 1.1, listed as untracked.
+You should see: your two new files from lesson 1.2, listed as untracked.
 
 ```
 On branch main
@@ -53,13 +53,13 @@ nothing added to commit but untracked files present (use "git add" to track)
 
 ```
 git add .
-git commit -m "1.1 Hello: HTML and CSS"
+git commit -m "1.2 Hello, HTML and CSS"
 ```
 
 You should see something like this:
 
 ```
-[main b704d4a] 1.1 Hello: HTML and CSS
+[main b704d4a] 1.2 Hello, HTML and CSS
  2 files changed, 19 insertions(+)
  create mode 100644 index.html
  create mode 100644 style.css
@@ -76,7 +76,7 @@ git log --oneline
 You should see your save points, newest at the top:
 
 ```
-b704d4a (HEAD -> main) 1.1 Hello: HTML and CSS
+b704d4a (HEAD -> main) 1.2 Hello, HTML and CSS
 ad98e00 Add a line to README
 e29c74f Add README
 ```
@@ -131,11 +131,11 @@ Open the Source Control tab (the icon with the branching line, or Ctrl+Shift+G).
 
 You should see: `index.html` under **Changes**, with an `M`.
 
-Click the file name. A new view opens that shows the diff side by side. The left side is your last save point, and the right side is your file now. Red and green mark what is different.
+Click the file name. A new tab opens, called `index.html (Working Tree)`, and it shows the diff. The left side is your last save point, and the right side is your file now. Red and green mark what is different. If your window is narrow, VS Code may put the two versions one above the other instead.
 
 ```
 +--------------------------------+--------------------------------+
-| index.html (before)            | index.html (now)               |
+| last save point                | index.html (Working Tree)      |
 +--------------------------------+--------------------------------+
 |     <h1>Student Planner</h1>   |     <h1>Student Planner</h1>   |
 | -   <p>Welcome, Sam</p>        | +   <p>Hello, Sam</p>          |
@@ -177,9 +177,24 @@ git restore index.html
 
 Be careful with this one. Discard throws away every change in that file since the last save point, and git cannot give them back. That is why you commit often: a save point is something you can always return to.
 
+### 7. Put the welcome back
+
+The next lessons expect your page to say `Welcome, Sam`, so put it back the way it was before step 4. Change `Hello, Sam` back to `Welcome, Sam` and save. Then make the same moves in the terminal:
+
+```
+git status
+git diff
+git add .
+git commit -m "Put the welcome back"
+git log --oneline
+```
+
+You should see: `git diff` shows `Hello` replaced by `Welcome`, the opposite of step 4, and `Put the welcome back` at the top of the log.
+
 ## Recap
 
-- At the end of every lesson you do the routine: `status`, `diff`, `add .`, `commit`, `log`.
+- To save your work you do the routine: `status`, `diff`, `add .`, `commit`, `log`.
+- From now on, finish every lesson with the routine. Use the lesson number and its name as the caption.
 - `git diff` shows what changed, line by line: `-` was removed, `+` was added.
 - `git log --oneline` lists your save points.
 - Discard Changes (or `git restore <file>`) takes a file back to its last save point. It cannot be undone.
@@ -197,19 +212,19 @@ Be careful with this one. Discard throws away every change in that file since th
 
 ## Homework
 
-First, finish the homework from lesson 1.1 and save it with the routine. Use the caption `1.1 Homework`.
+First, finish the homework from lesson 1.2 and save it with the routine. Use the caption `1.2 Homework`. Then take it out again, as the end of each task in lesson 1.2 says, so your files match the lessons that come next.
 
 Then try these. Each should take about five minutes.
 
-1. **Three changes, three save points.** Make three small changes to your page, such as your name, the title of the page, or the background colour. Save each one with its own commit. Use the terminal for two of them and the tab for one. You know it worked when `git log --oneline` shows three new captions.
+1. **Three changes, three save points.** Make three small changes to your page, such as your name, the welcome word, or the side the text sits on (`text-align`). Save each one with its own commit. Use the terminal for two of them and the tab for one. You know it worked when `git log --oneline` shows three new captions. Take it out again when you are done: put the welcome line back to `Welcome, Sam` (with your name) and `text-align` back to `center`.
 
-2. **Say it before you save it.** Make one more change. Before you commit, run `git diff` and say out loud, in one sentence, what it shows. Use that sentence as your caption. You know it worked when someone could understand your caption without opening the file.
+2. **Say it before you save it.** Make one more change. Before you commit, run `git diff` and say out loud, in one sentence, what it shows. Use that sentence as your caption. You know it worked when someone could understand your caption without opening the file. Take it out again when you are done, the same way as in task 1.
 
 3. **Stretch: break it and bring it back.** Delete half of `style.css` and look at the browser to see what happens. Then bring the file back with `git restore style.css`. You know it worked when the page looks right again.
 
 ## Stuck?
 
-- **`git diff` shows nothing.** Check that you saved the file. If the file is brand new, `git diff` skips it: use `git status` instead.
+- **`git diff` shows nothing.** Check that you saved the file. If the file is brand new, `git diff` skips it: use `git status` instead. If you already ran `git add` on the file, it is in the frame, and plain `git diff` only looks at changes that are not in the frame: run `git diff --staged` to see those.
 - **The terminal shows a `:` and does not move on.** Press `q`.
 - **You discarded something you wanted.** Git cannot bring it back. Try Ctrl+Z in the editor, and tell your teacher. Next time, commit before you experiment.
 - **`nothing to commit, working tree clean`.** There is nothing new to save. Check that you saved your files.

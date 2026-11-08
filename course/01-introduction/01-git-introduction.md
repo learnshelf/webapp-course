@@ -1,6 +1,6 @@
-# Git introduction
+# 1.1: Git introduction
 
-About 18 minutes. No HTML yet.
+About 18 minutes. No web page yet.
 
 By the end of this lesson you will have a project folder that git is watching, with two save points in it. You will have made one with typed commands and one with VS Code's Source Control tab:
 
@@ -28,7 +28,7 @@ A save takes two moves, like taking a photo:
    your folder               the frame                    the photo album
 ```
 
-Git runs on your own computer, so it works without internet. (GitHub is a website, and a different thing. You will meet it in G3.)
+Git runs on your own computer, so it works without internet. (GitHub is a website, and a different thing. You will meet it in [lesson 1.6](06-github.md).)
 
 Words to remember:
 
@@ -43,7 +43,9 @@ Words to remember:
 
 Create a new folder called `studentplanner` somewhere you will find it again, such as Documents.
 
-Open VS Code and choose File > Open Folder..., then pick that folder.
+Open VS Code (short for Visual Studio Code). If you are reading this lesson in VS Code already, choose File > New Window first, so the lesson stays open in the old window. In the new window, choose File > Open Folder..., then pick that folder.
+
+VS Code may ask "Do you trust the authors of the files in this folder?". It is your own folder, so click **Yes, I trust the authors**.
 
 You should see: the name STUDENTPLANNER at the top of the Explorer panel on the left, with nothing inside it yet.
 
@@ -51,7 +53,7 @@ You should see: the name STUDENTPLANNER at the top of the Explorer panel on the 
 
 In VS Code choose Terminal > New Terminal. (The shortcut is Ctrl and the backtick key.)
 
-You should see: a panel at the bottom of the window, with a line that ends in `studentplanner`. That is the folder you are in.
+You should see: a panel at the bottom of the window, with a line that contains `studentplanner`. That is the folder you are in. The line ends with a sign (`>` on Windows, `%` on a Mac), and you type after it.
 
 ```
 +--------------------------------------------------------+
@@ -77,6 +79,8 @@ You should see: something like `git version 2.43.0`. Your number will differ.
 
 If you see an error such as "not recognized" or "command not found", tell your teacher before going on.
 
+On a Mac, a window may open and offer to install the "command line developer tools". Click **Install**, wait until it says it is done (it can take a few minutes), then run `git --version` again.
+
 ### 4. Write the README
 
 In the Explorer, click the New File icon, name the file `README.md`, and type this:
@@ -91,7 +95,7 @@ By <your name>
 
 Replace `<your name>` with your real name, without the `<` and `>`.
 
-The `#` at the start makes a heading. A README is the front page of a project: anyone who opens the project reads it first.
+The `#` at the start makes a heading. A README is the front page of a project: anyone who opens the project reads it first. The `.md` stands for Markdown: plain text with a few signs, such as `#`, that turn into headings and lists when GitHub shows the file.
 
 Save the file with Ctrl+S (Cmd+S on a Mac). A dot next to the file name in its tab means it is not saved yet.
 
@@ -100,10 +104,12 @@ You should see: `README.md` in the Explorer.
 ### 5. Tell git to watch the folder
 
 ```
-git init
+git init -b main
 ```
 
-You should see: a line that starts with `Initialized empty Git repository in` and ends with `.git/`.
+`-b main` gives your timeline its name, `main`. It needs git 2.28 or newer, and any git installed in the last few years is newer than that. If git says it does not know `-b`, run `git init`, and then `git branch -M main`.
+
+You should see: a line that starts with `Initialized empty Git repository in` and ends with `.git/`. If grey lines that start with `hint:` appear above it, they are harmless: ignore them.
 
 Your folder now has a hidden `.git` folder. You will not see it in the Explorer. Leave it alone: if you delete it, your save points are gone.
 
@@ -127,7 +133,7 @@ Untracked files:
 nothing added to commit but untracked files present (use "git add" to track)
 ```
 
-"Untracked" means git can see the file but is not saving it yet. `main` is the name of your timeline, and you can ignore it for now. If it says `master` instead, tell your teacher: it is a quick fix.
+"Untracked" means git can see the file but is not saving it yet. `main` is the name of your timeline. (Git's own word for a timeline is **branch**, so you will see that word in git's messages.) If it says `master` instead, run `git branch -M main` to rename it. Nothing is lost, because you have no save points yet.
 
 ### 7. Put the file in the frame
 
@@ -135,7 +141,7 @@ nothing added to commit but untracked files present (use "git add" to track)
 git add README.md
 ```
 
-You should see: nothing. That is normal. Git stays quiet when a command works. (On Windows you may see a warning about `LF will be replaced by CRLF`. It is harmless: ignore it.)
+You should see: nothing. That is normal. Git stays quiet when a command works. (On Windows you may see a warning about `LF will be replaced by CRLF`. LF and CRLF are two ways of marking the end of a line, and the warning is harmless: ignore it.)
 
 Now ask again:
 
@@ -158,6 +164,17 @@ Changes to be committed:
 README.md moved from "untracked" to "to be committed". It is in the frame.
 
 ### 8. Take the photo
+
+First, tell git who you are. Git puts your name and email on every save point. You do this once on each computer, and never again:
+
+```
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+```
+
+Use your own name, and the email address of your GitHub account. You should see: nothing, because git stays quiet when a command works.
+
+Now take the photo:
 
 ```
 git commit -m "Add README"
@@ -273,13 +290,13 @@ The terminal and the tab are two ways of doing the same thing:
 - The Source Control tab does the same with buttons: **Changes** are the files that changed, **Staged Changes** are the files in the frame, and **Commit** takes the photo.
 
 ```
-git init                 start watching this folder (once per project)
+git init -b main         start watching this folder (once per project)
 git status               what has changed? what is saved?
 git add <file>           put a file in the frame
 git commit -m "words"    take the photo, with a caption
 ```
 
-Next you will build your first web page. After that you will learn to look back at your save points.
+Next you will build your first web page, in [lesson 1.2](02-hello-html-css.md). After that you will learn to look back at your save points.
 
 ## Homework
 
@@ -293,8 +310,12 @@ Do these in the same project. Each should take about five minutes.
 
 ## Stuck?
 
-- `fatal: not a git repository`: the terminal is not in your project folder, or you have not run `git init`. Check that the line ends in `studentplanner`, then run `git init`.
-- `no changes added to commit`: you skipped `git add`. Run `git add <file>`, then commit again.
-- `Author identity unknown`: git does not know your name yet. Tell your teacher.
+- `fatal: not a git repository`: the terminal is not in your project folder, or you have not run `git init`. Check that the line contains `studentplanner`, then run `git init -b main`.
+- `no changes added to commit`: you changed a file that git already knows, and skipped `git add`. Run `git add <file>`, then commit again.
+- `nothing added to commit but untracked files present`: you made a new file and skipped `git add`. Run `git add <file>`, then commit again.
+- `Author identity unknown`: git does not know your name yet. Run the two `git config --global` lines from step 8, then commit again.
+- A long note that says `Your name and email address were configured automatically` (often on a Mac): git made up a name from your computer, because you skipped the two `git config --global` lines in step 8. Run them now, then run `git commit --amend --reset-author --no-edit` to fix the save point you just made.
+- A text editor opened after `git commit`, or the terminal shows a `>` and does not move on: you left out `-m`, or you left out a closing quote. For the editor, press Esc, type `:q!` and press Enter (if a VS Code tab opened instead, close it). For the `>`, press Ctrl+C. Then type the commit line again.
+- A file called `.DS_Store` is listed as untracked (a Mac): Finder leaves it in folders. It is harmless. Do not add it by name.
 - The Source Control tab says the folder does not have a git repository: you have not run `git init` yet (step 5), or you opened a different folder.
 - VS Code asks something like "There are no staged changes to commit. Would you like to stage all your changes and commit them directly?": you clicked Commit before staging anything. Cancel, stage the file with the **+**, then commit.
